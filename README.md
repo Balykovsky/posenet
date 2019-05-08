@@ -1,2 +1,2 @@
 # posenet
-Simple realization of PoseNet model for camer localization
+Simple realization of PoseNet model for camera localization
