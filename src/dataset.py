@@ -7,7 +7,7 @@ import pandas as pd
 
 
 class PoseNetDataset:
-    def __init__(self, path: str, img_dir: str, ids: [], aug: callable):
+    def __init__(self, path: str, img_dir: str, ids: [], aug: callable = lambda x: x):
         self._path = path
         self._img_dir = img_dir
         self.__items_df = pd.read_csv(self._path)
