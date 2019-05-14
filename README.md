@@ -37,16 +37,16 @@ Simple realization of PoseNet model for camera localization task
    Model was training on random crops from original images for 250 epoches with batch size = 4 and LR decaying.
 
    Loss: weighted sum of pairwise distance between position and quaternion pairs (with learnable weights as parameters)
-   ![Losses](imgs/losses.jpg)
+   ![Losses](imgs/losses.png)
   
    Core augmentaions: Random brightness and contrast and noise for reproduction of day-night cases
   
    TTA: Final prediction is mean of n random crops.
    
    Using separate parts of loss for perfomance metric:
-   ![Validation metric](imgs/metrics.jpg)
+   ![Validation metric](imgs/metrics.png)
    
-   All logs available in tensorboard events : [log folder](tensorboard)
+   All logs available in tensorboard events : [log folder](logs/)
       
    In [visualization notebook](posenet_visualize) you can predict images and look and compare with ground truth vectors:
-   ![sample1](imgs/sample1.jpg)
+   ![sample1](imgs/sample1.png)
