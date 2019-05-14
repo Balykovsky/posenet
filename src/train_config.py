@@ -17,7 +17,7 @@ from models import GoogleNet
 from metrics import PosQtnMetricsProcessor, PoseNetLoss
 
 
-base_dir = '/mnt/tb_storage/uprojects/posenet/dataset'
+base_dir = '/mnt/tb_storage/uprojects/dataset'
 img_dir = os.path.join(base_dir, 'images')
 csv_data = os.path.join(base_dir, 'info.csv')
 
@@ -54,11 +54,11 @@ def augmentate_val(img: np.ndarray):
 
 
 class PoseNetTrainConfig(TrainConfig):
-    experiment_name = 'exp_ll'
+    experiment_name = 'exp_longrun'
     experiment_dir = os.path.join('experiments', experiment_name)
 
     def __init__(self):
-        train_ids, val_ids = train_test_split(range(900), shuffle=True, test_size=0.2)
+        train_ids, val_ids = train_test_split(range(990), shuffle=True, test_size=0.2)
         train_dataset = PoseNetDataset(csv_data, img_dir, train_ids, augmentate_train)
         val_dataset = PoseNetDataset(csv_data, img_dir, val_ids, augmentate_val)
 

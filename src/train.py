@@ -9,7 +9,7 @@ from neural_pipeline.utils.fsm import FileStructManager
 from neural_pipeline.builtin.monitors.tensorboard import TensorboardMonitor
 
 
-EPOCH_NUM = 50
+EPOCH_NUM = 250
 
 
 def train():
