@@ -27,7 +27,7 @@ Simple realization of PoseNet model for camera localization task
 
   `conda env create -f environment.yml`
 
-  Set hyperparameters as variables in [train config file]('src/train_config.py')
+  Set hyperparameters as variables in [train config file](src/train_config.py)
   
   ## Training process and results:
    As mentioned earlier, it's just example, not production-ready project, so there are some big error values.
@@ -37,7 +37,7 @@ Simple realization of PoseNet model for camera localization task
    Model was training on random crops from original images for 250 epoches with batch size = 4 and LR decaying.
 
    Loss: weighted sum of pairwise distance between position and quaternion pairs (with learnable weights as parameters)
-   ![Losses](imgs/losses.png)
+   ![Losses](imgs/loss.png)
   
    Core augmentaions: Random brightness and contrast and noise for reproduction of day-night cases
   
@@ -48,5 +48,5 @@ Simple realization of PoseNet model for camera localization task
    
    All logs available in tensorboard events : [log folder](logs/)
       
-   In [visualization notebook](posenet_visualize) you can predict images and look and compare with ground truth vectors:
+   In [visualization notebook](posenet_visualize.ipynb) you can predict images and look and compare with ground truth vectors:
    ![sample1](imgs/sample1.png)
