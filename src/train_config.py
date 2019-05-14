@@ -47,6 +47,7 @@ def augmentate_train(img: np.ndarray):
     res = augmentations(image=img)
     return torch.from_numpy(np.moveaxis(res['image'].astype(np.float32) / 255., -1, 0))
 
+
 def augmentate_val(img: np.ndarray):
     res = RandomCrop(299, 299)(image=img)
     return torch.from_numpy(np.moveaxis(res['image'].astype(np.float32) / 255., -1, 0))
@@ -80,6 +81,3 @@ class PoseNetTrainConfig(TrainConfig):
         self.val_stage = ValidationStage(val_data_producer, PosQtnMetricsProcessor('validation'))
 
         super().__init__(model, [self.train_stage, self.val_stage], loss_func, optimizer)
-
-        # super().__init__(model, [self.train_stage, self.val_stage], PoseNetLoss(),
-        #                  torch.optim.Adam(model.parameters(), lr=1e-4))

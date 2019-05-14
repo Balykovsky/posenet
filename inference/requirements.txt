@@ -1,0 +1,6 @@
+torch
+torchvision
+Flask
+numpy
+Pillow
+albumentations
