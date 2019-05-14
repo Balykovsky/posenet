@@ -12,9 +12,9 @@ class PoseNetLoss(torch.nn.Module):
         self.pos_loss = PairwiseDistance()
         self.qtn_loss = PairwiseDistance()
         self.learn_flag = learn_flag
-        self.pos_wt = torch.nn.Parameter(torch.Tensor([pos_wt]), 
+        self.pos_wt = torch.nn.Parameter(torch.Tensor([pos_wt]),
                                          requires_grad=self.learn_flag)
-        self.qtn_wt = torch.nn.Parameter(torch.Tensor([qtn_wt]), 
+        self.qtn_wt = torch.nn.Parameter(torch.Tensor([qtn_wt]),
                                          requires_grad=self.learn_flag)
 
     def forward(self, outputs, targets):
@@ -22,7 +22,6 @@ class PoseNetLoss(torch.nn.Module):
         qtn_loss = self.qtn_loss(outputs[1], targets[:, 3:])
         losses = torch.exp(-self.pos_wt)*pos_loss + self.pos_wt \
                  + torch.exp(-self.qtn_wt)*qtn_loss + self.qtn_wt
-        # losses = 0.5*pos_loss + 0.5*qtn_loss
         return losses.sum()/len(losses)
 
 

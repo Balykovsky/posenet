@@ -1,3 +1,4 @@
+import sys
 import torch
 import cv2
 import numpy as np
@@ -22,10 +23,13 @@ def predict_img(img: np.ndarray, predictor: Predictor, crops: int = 10):
 
 
 if __name__ == "__main__":
-    img = cv2.imread('/mnt/tb_storage/uprojects/dataset/images/img_0_0_1542108891812919700.png')
+    if len(sys.argv) < 2:
+        raise Exception('Missed path to image as argument')
+
+    img = cv2.imread(sys.argv[1])
     model = GoogleNet(inception_v3(pretrained=True))
     model = torch.nn.DataParallel(model)
-    checkpoints_dir = 'experiments/exp_initial'
+    checkpoints_dir = 'experiments/exp_last'
     fsm = FileStructManager(base_dir=checkpoints_dir, is_continue=True)
     predictor = Predictor(model, fsm=fsm, from_best_state=False, device=torch.device('cuda'))
     predict_img(img, predictor)

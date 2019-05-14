@@ -5,7 +5,7 @@ from commons import get_model, get_tensor
 
 
 app = Flask(__name__)
-model = get_model()
+model = get_model('weights/weights.pth')
 
 
 @app.route('/predict', methods=['POST'])

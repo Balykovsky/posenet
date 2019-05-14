@@ -17,19 +17,19 @@ from models import GoogleNet
 from metrics import PosQtnMetricsProcessor, PoseNetLoss
 
 
-base_dir = '/mnt/tb_storage/uprojects/dataset'
+base_dir = '/mnt/tb_storage/uprojects/posenet/dataset'
 img_dir = os.path.join(base_dir, 'images')
 csv_data = os.path.join(base_dir, 'info.csv')
 
 BATCH_SIZE = 4
-LEARN_LOSS = True
+LEARN_LOSS = False
 POS_WT = 0.5
 QTN_WT = 0.5
 
 augmentations = Compose([RandomCrop(299, 299),
                          RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2),
-                         RandomGamma(),
                          RGBShift(),
+                         RandomGamma(),
                          OneOf([
                             IAAAdditiveGaussianNoise(p=1.),
                             GaussNoise(p=1.)], p=0.27),
@@ -54,7 +54,7 @@ def augmentate_val(img: np.ndarray):
 
 
 class PoseNetTrainConfig(TrainConfig):
-    experiment_name = 'exp_longrun'
+    experiment_name = 'exp_last'
     experiment_dir = os.path.join('experiments', experiment_name)
 
     def __init__(self):

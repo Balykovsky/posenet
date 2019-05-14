@@ -4,7 +4,7 @@ import requests
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print('Please, specify image path as arg')
+        raise Exception('Missed path to image as argument')
 
     url = 'http://127.0.0.1:5000/predict'
 
